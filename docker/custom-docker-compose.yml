@@ -1,6 +1,33 @@
+# override the secrets configuration
+secrets:
+  sia_db_username_secret:
+    external: false
+    file: ../secrets/sia_user.txt
+  sia_db_password_secret:
+    external: false
+    file: ../secrets/sia_pass.txt
 services:
-  db-ords-deploy:
-    # MOUNT: Map the SQL files from the PRI submodule to where 
-    # the CODE deploy container expects to find them.
+  # Override pifsc-resource-inventory configuration
+  staff-info-app:
+    # specify the database network
+    networks:
+      - oracle-net
+    build:
+      # Explicitly set the folder containing the Dockerfile
+      context: ../modules/staff-info-app
+      dockerfile: docker/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    # define the mounted volumes for the SIA apps
     volumes:
-      # add in entries to map the submodule volumes to allow the database schemas/objects or apex apps to be deployed from container
+      - "../modules/staff-info-app/docker/src/frontend:/var/www/html"
+      - "../modules/staff-info-app/docker/src/backend:/usr/src/app"
+      - "../modules/staff-info-app/modules/php-shared-library:/usr/src/app/dependencies"
+  db-ords-deploy:
+    # define the mounted volumes for the DB/Apex apps 
+    volumes:
+      - ../modules/staff-info-app/SQL:/usr/src/staff-info-app/SQL
+networks:
+  oracle-net:
+    name: oracle-net
