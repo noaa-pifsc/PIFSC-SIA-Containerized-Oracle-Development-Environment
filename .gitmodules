@@ -1,3 +1,6 @@
 [submodule "modules/CDS"]
 	path = modules/CDS
 	url = git@github.com:noaa-pifsc/PIFSC-Container-Deployment-Scripts.git
+[submodule "modules/staff-info-app"]
+	path = modules/staff-info-app
+	url = git@picgitlab.nmfs.local:omi-apps/staff-info-app.git
