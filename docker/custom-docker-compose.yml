@@ -7,7 +7,7 @@ secrets:
     external: false
     file: ../secrets/sia_pass.txt
 services:
-  # Override pifsc-resource-inventory configuration
+  # Override SIA configuration
   staff-info-app:
     # specify the database network
     networks:
