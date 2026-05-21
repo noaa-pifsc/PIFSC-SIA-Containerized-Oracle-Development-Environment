@@ -1,0 +1,31 @@
+# override the secrets configuration
+secrets:
+  sia_db_username_secret:
+    name: ${COMPOSE_PROJECT_NAME}_sia_db_username_secret
+    external: true
+  sia_db_password_secret:
+    name: ${COMPOSE_PROJECT_NAME}_sia_db_password_secret
+    external: true
+services:
+  # Override staff-info-app configuration
+  staff-info-app:
+    # specify the database network
+    environment:
+      DB_HOST: ${DBHOST}
+      DB_SERVICE_NAME: ${DBSERVICENAME}
+    networks:
+      - oracle-net
+    build:
+      # Explicitly set the folder containing the Dockerfile
+      context: ../../projects/SIA
+      dockerfile: container_application_deployment/Dockerfile
+    # define the mounted volumes for the SIA apps
+    volumes:
+      - "../../projects/SIA/modules/SIA/src/frontend:/var/www/html"
+      - "../../projects/SIA/modules/SIA/src/backend:/usr/src/app"
+      - "../../projects/SIA/modules/SIA/modules/php-shared-library:/usr/src/app/dependencies"
+  secrets:
+    - sia_db_username_secret
+    - sia_db_password_secret
+networks:
+  oracle-net:
