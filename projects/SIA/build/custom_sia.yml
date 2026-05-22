@@ -17,15 +17,14 @@ services:
       - oracle-net
     build:
       # Explicitly set the folder containing the Dockerfile
-      context: ../../projects/SIA
+      context: ../../projects/SIA/modules/SIA
       dockerfile: container_application_deployment/Dockerfile
     # define the mounted volumes for the SIA apps
     volumes:
       - "../../projects/SIA/modules/SIA/src/frontend:/var/www/html"
       - "../../projects/SIA/modules/SIA/src/backend:/usr/src/app"
       - "../../projects/SIA/modules/SIA/modules/php-shared-library:/usr/src/app/dependencies"
-  secrets:
-    - sia_db_username_secret
-    - sia_db_password_secret
+    ports:
+      - "0.0.0.0:5015:80"
 networks:
   oracle-net:
