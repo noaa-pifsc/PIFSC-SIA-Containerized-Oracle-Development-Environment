@@ -7,10 +7,10 @@
 	DB_SCRIPTS_MAP+=("${BUILD_PATH}/../../projects/SIA/modules/SIA/SQL|@dev_container_setup/create_docker_schemas.sql|oracle_admin_user|oracle_pwd|picadm_db_password_secret|sia_db_password_secret")
 
 	# create PICADM data schema objects
-	DB_SCRIPTS_MAP+=("${BUILD_PATH}/../../projects/SIA/modules/SIA/SQL|@automated_deployments/deploy_dev.sql|sia_db_username_secret|sia_db_password_secret")
+	DB_SCRIPTS_MAP+=("${BUILD_PATH}/../../projects/SIA/modules/SIA/SQL|@automated_deployments/deploy_dev.sql|picadm_db_username_secret|picadm_db_password_secret")
 
 	# create STAFF_INFO_APP schema objects
-	DB_SCRIPTS_MAP+=("${BUILD_PATH}/../../projects/SIA/modules/SIA/SQL|@automated_deployments/deploy_SIA_dev.sql|picadm_db_username_secret|picadm_db_password_secret")
+	DB_SCRIPTS_MAP+=("${BUILD_PATH}/../../projects/SIA/modules/SIA/SQL|@automated_deployments/deploy_SIA_dev.sql|sia_db_username_secret|sia_db_password_secret")
 
 	# define the array of compose files that are used by the individual projects (specify the path relative to the core/build directory
 
