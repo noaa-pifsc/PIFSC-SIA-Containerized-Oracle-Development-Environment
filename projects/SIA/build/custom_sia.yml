@@ -25,6 +25,9 @@ services:
       - "../../projects/SIA/modules/SIA/src/backend:/usr/src/app"
       - "../../projects/SIA/modules/SIA/modules/php-shared-library:/usr/src/app/dependencies"
     ports:
-      - "0.0.0.0:5015:80"
+      - target: 80
+        published: ${CONTAINER_APP_PORT}
+        protocol: tcp
+        mode: host
 networks:
   oracle-net:
