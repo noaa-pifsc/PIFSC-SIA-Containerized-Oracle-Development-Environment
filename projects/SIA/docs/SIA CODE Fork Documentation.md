@@ -28,7 +28,7 @@ The PIFSC Containerized Oracle Developer Environment (CODE) project was develope
         -   folder path: [/projects/SIA/modules/SIA](../../SIA/modules/SIA) 
         -   Version Control Information:
             -   URL: <git@github.com:noaa-pifsc/PIFSC-Staff-Info-App.git>
-            -   Application Version: 1.3 (Git tag: staff_info_app_v1.3)
+            -   Application Version: 1.4 (Git tag: staff_info_app_v1.4)
 
 ## Container Architecture
 -   Refer to the CODE [Container Architecture](../../../../core/docs/CODE%20Documentation.md#container-architecture) documentation for details
